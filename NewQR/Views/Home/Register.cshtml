@@ -1,0 +1,57 @@
+﻿@model NewQR.Models.Auth
+@{
+    Layout = null;
+}
+@{
+    if (ViewBag.Message != null)
+    {
+        <p style="color:red">@ViewBag.Message</p>
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>QR Code Generator</title>
+    <!-- Add CSS references here -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<div class="row">
+    <div class="col-md-4 offset-md-4 border shadow rounded-2 border-danger px-5 py-5 my-5">
+        <h3 class="text-center">REGISTER</h3>
+        <form id="registerForm" method="post" class="py-5">
+            <input asp-for="UserId" type="hidden" />
+            <div class="row">
+                <div class="col text-center">
+                    <img width="100px" src="~/css/Media.jfif" alt="Logo" />
+                </div>
+            </div>
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <label for="inputEmail" class="text-black fw-bold">Email</label>
+                <input asp-for="Email" id="inputEmail" type="email" class="form-control" placeholder="Name@email.com" autocomplete="username" aria-required="true" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="text-black fw-bold">Password</label>
+                <input asp-for="Password" id="inputPassword" type="password" class="form-control" placeholder="Password" autocomplete="new-password" aria-required="true" />
+                <div id="passwordHelpBlock" class="form-text">
+                    Your password must be 6-20 characters long.
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label for="inputConfirmPassword" class="text-black fw-bold">Confirm Password</label>
+                <input id="inputConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" autocomplete="new-password" aria-required="true" />
+                <span class="text-danger"></span>
+            </div> *@
+            <br />
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
