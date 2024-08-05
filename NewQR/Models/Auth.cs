@@ -2,13 +2,15 @@
 
 namespace NewQR.Models
 {
+    //Defining my model as auth which contains parameters as userid email and password
+    //after this we add igration and update databse to make a table accordingly.
     public class Auth
     {
         [Key]
         public int UserId { get; set; }
 
         [EmailAddress]
-        [Required(ErrorMessage = "Please Enter Email")]
+        [Required(ErrorMessage = "Please Enter Email")] //Added server side authentication of asp.net 
         [Display(Name = "Enter Your Email")]
         public string Email { get; set; }
 

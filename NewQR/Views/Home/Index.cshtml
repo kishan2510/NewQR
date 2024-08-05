@@ -85,7 +85,7 @@
 <body>
     <div class="container">
         <div id="content">
-            <h1>Implementing QRCoder in ASP.NET Core - Create QR Code</h1>
+            <h1>QRCoder</h1>
             <h2>
                 <button id="reset" onclick="location=''">Reset »</button>
             </h2>
@@ -104,7 +104,11 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <button>Submit</button>
+                                    <button >Generate </button>
+                                </td>  
+                                <td colspan="2">
+                                    @* <button asp-action="DownloadFile" asp-controller="Home">Download </button> *@
+                                   
                                 </td>
                             </tr>
                         </tbody>
@@ -115,10 +119,18 @@
                 if (Model != null)
                 {
                     <h3>QR Code Successfully Generated</h3>
-                    <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model))" />
+                    <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model))" /> 
                 }
+
             }
-            <button asp-action="Logout" asp-controller="Home">Logout</button>
+            @{
+                if (Model != null)
+                {          
+                 <a href="@Url.Action("DownloadFile", new { qrText = ViewBag.QRCodeText })" class="btn btn-primary">Download QR Code</a>
+                }
+
+            }
+       
         </div>
     </div>
 </body>

@@ -14,8 +14,39 @@
     <meta charset="utf-8" />
     <title>QR Code Generator</title>
     <!-- Add CSS references here -->
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />a
     <link rel="stylesheet" href="~/css/site.css" />
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('registerForm');
+    const emailInput = document.getElementById('inputEmail');
+    const passwordInput = document.getElementById('inputPassword');
+    const emailError = emailInput.nextElementSibling;
+    const passwordError = passwordInput.nextElementSibling;
+
+    form.addEventListener('submit', function(event) {
+        let valid = true;
+
+        // Clear previous errors
+        emailError.textContent = '';
+        passwordError.textContent = '';
+
+
+        // Password validation
+        const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,20}$/;
+        if (!passwordPattern.test(passwordInput.value)) {
+            passwordError.textContent = 'Password must be 6-20 characters long and contain at least one letter and one number.';
+            valid = false;
+        }
+
+        // Prevent form submission if invalid
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+});
+
+    </script>
 </head>
 <body>
 <div class="row">
